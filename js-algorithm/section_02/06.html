@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(arr){
+              const n = 5;
+
+              // 각 행의 합
+              const row = arr.map((rowArray) => {
+                return rowArray.reduce((acc, val) => acc + val);
+              })
+
+              // 각 열의 합
+              const col = []
+              for (let i = 0; i < n; i++) {
+                let colSum = 0;
+                for (let j = 0; j < n; j++) {
+                  colSum += arr[j][i];
+                }
+                col.push(colSum);
+              }
+
+              // 대각선의 합
+              const diagonal = [];
+
+              // 왼쪽 위에서 오른쪽 아래로 향하는 대각선
+              let diagonalSum1 = 0;
+              // 오른쪽 위에서 왼쪽 아래로 향하는 대각선
+              let diagonalSum2 = 0;
+              let j = n - 1;
+              for (let i = 0; i < n; i++) {
+                diagonalSum1 += arr[i][i];
+                diagonalSum2 += arr[i][j];
+                j--;
+              }
+              diagonal.push(diagonalSum1);
+              diagonal.push(diagonalSum2);
+
+              // 최댓값 구하기
+              let max = 0;
+              let sumArrays = [...row, ...col, ...diagonal];
+              sumArrays.forEach((num) => {
+                if (num > max) max = num;
+              })
+
+                return max;
+            }
+
+            let arr=[[10, 13, 10, 12, 15], 
+                     [12, 39, 30, 23, 11],
+                     [11, 25, 50, 53, 15],
+                     [19, 27, 29, 37, 27],
+                     [19, 13, 30, 13, 19]];
+            console.log(solution(arr));
+        </script>
+    </body>
+</html>

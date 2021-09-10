@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(k, arr) {
+        const pSum = [];
+        let sum = 0;
+        const maxSum = [];
+
+        for (let i = 0; i < arr.length; i++) {
+          sum += arr[i];
+          pSum.push(sum);
+        }
+
+        for (let j = k; j < arr.length; j++) {
+          maxSum.push(pSum[j] - pSum[j - k]);
+        }
+
+        return Math.max(...maxSum);
+      }
+
+      let a = [12, 15, 11, 20, 25, 10, 20, 19, 13, 15];
+      console.log(solution(3, a));
+    </script>
+  </body>
+</html>

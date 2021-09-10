@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(a, b, c){
+              // 1. Math.min 사용
+              // const answer = Math.min(a, b, c);
+
+              // 2. 내 풀이
+              let answer;
+
+              if (a >= b) {
+                // a가 b보다 같거나 크면 최솟값으로 b를 저장
+                answer = b;
+              } else if (a >= c) {
+                // a가 b보다 작으면 현재까지 최솟값은 a
+                // a와 c를 비교해서 a가 c보다 같거나 크면 최솟값은 c
+                answer = c;
+              } else {
+                // a와 c를 비교해서 a가 c보다 작으면 최솟값은 a
+                answer = a;
+              }
+
+              // 3. 정답 풀이
+              // let answer;
+              // if (a < b) answer = a;
+              // else answer = b;
+              // if (c < answer) answer = c;
+
+              return answer;
+            }
+
+            console.log(solution(6, 5, 11));
+        </script>
+    </body>
+</html>

@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let answer;
+        let sH = new Map();
+
+        // 인자로 들어온 문자열의 각 문자를 돌면서
+        for (let x of s) {
+          // 해당 문자열을 키로 가지는지 확인
+          if (sH.has(x)) sH.set(x, sH.get(x) + 1);
+          // 문자열을 키로 가진다면 그 문자열을 키로 가지는 값을 +1 시켜줌
+          else sH.set(x, 1);
+          // 문자열이 키로 등록되어 있지 않은 경우 해당 문자열을 키로 등록함
+        }
+
+        // 선출된 회장을 확인하기 위한 최댓값 초기화
+        let max = Number.MIN_SAFE_INTEGER;
+
+        // 맵의 [키, 값] 배열을 돌면서
+        for (let [key, val] of sH) {
+          // 값이 최댓값보다 큰 경우 그 값의 키가 정답
+          if (val > max) {
+            max = val;
+            answer = key;
+          }
+        }
+        return answer;
+      }
+
+      let str = 'BACBACCACCBDEDE';
+      console.log(solution(str));
+    </script>
+  </body>
+</html>

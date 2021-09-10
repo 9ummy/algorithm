@@ -1,0 +1,48 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>출력결과</title>
+</head>
+
+<body>
+  <script>
+    function solution(m, product) {
+      let result = 0;
+
+      for (let i = 0; i < product.length; i++) {
+        let totalCost = 0;
+        let count = 0;
+
+        // i번째 상품 할인
+        product[i][0] = product[i][0] * 0.5;
+
+        // 할인한 이후 상품 가격 + 배송비로 정렬
+        const sortedArray = product.map((value) => value.reduce((acc, cur) => acc + cur)).sort((a, b) => a - b);
+        console.log(sortedArray);
+
+        // 예산 내에서 상품 구매
+        for (let j = 0; j < product.length; j++) {
+          // j번째 상품을 예산 안에서 구매할 수 있다면
+          if ((totalCost + sortedArray[j]) <= m) {
+            // 총 비용에 상품값을 더하고 count 올려주기
+            totalCost += sortedArray[j];
+            count++;
+          } else {
+            // 구매할 수 없다면 반복문 탈출 후 다음 상품 할인 받기
+            product[i][0] = product[i][0] * 2;
+            break;
+          }
+          result = Math.max(count, result);
+        }
+      }
+
+      return result;
+    }
+
+    let arr = [[6, 6], [2, 2], [4, 3], [4, 5], [10, 3]];
+    console.log(solution(28, arr));
+  </script>
+</body>
+
+</html>

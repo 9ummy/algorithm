@@ -1,0 +1,48 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function isAnagram(str1, str2) {
+        let map1 = new Map();
+        let map2 = new Map();
+
+        function makeMap(str, hashMap) {
+          for (let x of str) {
+            if (hashMap.has(x)) hashMap.set(x, hashMap.get(x) + 1);
+            else hashMap.set(x, 1);
+          }
+        }
+
+        makeMap(str1, map1);
+        makeMap(str2, map2);
+
+        for (let [key, value] of map1) {
+          if (map1.get(key) !== map2.get(key)) return false;
+        }
+        return true;
+      }
+
+      function solution(s, t) {
+        const k = t.length;
+        // t 문자열과 길이가 같은 부분문자열을 구해야 함
+        let answer = 0;
+
+        let partString = '_ba';
+        for (let i = k - 1; i < s.length; i++) {
+          // slice 함수는 endIndex 직전까지 자르는 것 주의!
+          // 여기서는 0번 인덱스부터 k - 1번 인덱스까지 잘라야 하므로 endIndex에 k를 넣어주어야 함
+          partString = partString.slice(1, k) + s[i];
+          if (isAnagram(partString, t)) answer++;
+        }
+        return answer;
+      }
+
+      let a = 'baabAacaa';
+      let b = 'aab';
+      console.log(solution(a, b));
+    </script>
+  </body>
+</html>

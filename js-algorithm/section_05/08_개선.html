@@ -1,0 +1,50 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      // 문자열을 가지고 맵을 만들어주는 함수
+      function makeMap(str) {
+        const newMap = new Map();
+
+        for (let x of str) {
+          if (newMap.has(x)) newMap.set(x, newMap.get(x) + 1);
+          else newMap.set(x, 1);
+        }
+        return newMap;
+      }
+
+      // 맵 객체 두 개를 받아 아나그램인지 확인해주는 함수
+      function isAnagram(map1, map2) {
+        if (map1.size !== map2.size) return false;
+        for (let [key, value] of map1) {
+          // if (map1.get(key) !== map2.get(key)) return false;
+          if (map2.get(key) !== value || !map2.has(key)) return false;
+        }
+        return true;
+      }
+
+      function solution(s, t) {
+        let answer = 0;
+        const k = t.length;
+        // t 문자열과 길이가 같은 부분문자열을 구해야 함
+
+        // t 문자열을 비교 대상으로 삼기 위해 맵으로 만들어줌
+        const tMap = makeMap(t);
+
+        for (let i = 0; i < s.length - k + 1; i++) {
+          const partString = s.slice(i, i + k);
+          const sMap = makeMap(partString);
+          if (isAnagram(sMap, tMap)) answer++;
+        }
+        return answer;
+      }
+
+      let a = 'bacaAacba';
+      let b = 'abc';
+      console.log(solution(a, b));
+    </script>
+  </body>
+</html>

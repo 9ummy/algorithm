@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(arr){
+              const sortedArr = arr.slice().sort((a, b) => b - a)
+
+              return arr.map((grade) => {
+                return sortedArr.indexOf(grade) + 1;
+              })
+            }
+
+            let arr=[87, 87, 92, 100, 76];
+            console.log(solution(arr));
+        </script>
+    </body>
+</html>

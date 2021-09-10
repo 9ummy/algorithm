@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(a, b, c){
+                let answer, max;
+
+                if (a > b) max = a;
+                else max = b;
+                if (c > max) max = c;
+
+                if ((a + b + c - max) > max) answer = 'YES';
+                else answer = 'NO';
+
+                // 모범 답안
+                // let answer = 'YES';
+                // if ((a + b + c - max) <= max) answer = 'NO';
+                // answer 초기값으로 'YES'를 넣어주고
+                // 짧은 두 변의 길이의 합이 제일 긴 변의 길이와 같거나 작을 때 answer를 'NO'로 바꿔줌
+
+                // const sum = a + b + c;
+                // 위와 같이 sum 변수를 선언해주어도 OK
+
+                return answer;
+            }
+
+            console.log(solution(13, 33, 17));
+        </script>
+    </body>
+</html>

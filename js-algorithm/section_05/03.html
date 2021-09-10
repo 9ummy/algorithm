@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(m, arr) {
+        let e = 0;
+        let sum = 0;
+        let count = 0;
+
+        for (let s = 0; s < arr.length; s++) {
+          while (sum < m && e < arr.length) {
+            sum += arr[e];
+            e++;
+          }
+          if (sum === m) count++;
+          sum -= arr[s];
+        }
+
+        return count;
+      }
+
+      let a = [1, 2, 1, 3, 1, 1, 1, 2];
+      console.log(solution(6, a));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(n){
+              const answer = Math.ceil(n / 12);
+
+              // Math 객체 사용하지 않고 풀어보기
+              // let answer;
+              // if (n % 12 === 0) answer = n / 12;
+              // else answer = parseInt(n / 12) + 1;
+
+              return answer;
+            }
+
+            console.log(solution(25));
+        </script>
+    </body>
+</html>

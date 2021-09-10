@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(s){
+              const word = s.toLowerCase();
+              const n = word.length;
+              let check = 1;
+
+              for (let i = 0; i < Math.ceil(n / 2); i++) {
+                if (word[i] != word[n - 1 - i]) {
+                  check = 0;
+                  break;
+                }
+              }
+
+              return check ? 'YES' : 'NO';
+            }
+            
+            let str="gooG";
+            console.log(solution(str));
+        </script>
+    </body>
+</html>
+
+
+<!-- <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(s){
+                let answer="YES";
+                s=s.toLowerCase();
+                if(s.split('').reverse().join('')!=s) return "NO";    
+                return answer;
+            }
+            
+            let str="gooG";
+            console.log(solution(str));
+        </script>
+    </body>
+</html>
+
+
+-->

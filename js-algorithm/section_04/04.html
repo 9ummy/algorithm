@@ -1,0 +1,46 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>출력결과</title>
+</head>
+
+<body>
+  <script>
+    function solution(m, product) {
+      const n = product.length;
+      let totalCost = 0;
+      let maxCount = 0;
+      // 상품 가격과 배송비의 총합이 작은 순으로 정렬
+      product.sort((a, b) => (a[0] + a[1]) - (b[0] + b[1]));
+
+      // 쿠폰을 순서대로 적용해보면서 최대로 살 수 있는 경우 찾기
+      for (let i = 0; i < n; i++) {
+        // product 배열을 복사한 배열 생성
+        const productCopy = product.slice();
+
+        // i번째 상품에 할인 쿠폰 적용
+        productCopy[i][0] = productCopy[i][0] * 0.5;
+
+        // 예산이 되는 선에서 하나씩 사기
+        for (let j = 0; j < n; j++) {
+          let count = 0;
+          // 현재까지 구매한 가격에 j번째 상품 가격을 더했을 때 예산보다 같거나 작다면 구매 가능
+          if ((totalCost + productCopy[j][0] + productCopy[j][1]) <= m) {
+            // 상품을 구매하고 구매 개수 카운트
+            totalCost += productCopy[j][0] + productCopy[j][1];
+            count++;
+          }
+          maxCount = Math.max(maxCount, count);
+        }
+      }
+
+      return maxCount;
+    }
+
+    let arr = [[6, 6], [2, 2], [4, 3], [4, 5], [10, 3]];
+    console.log(solution(28, arr));
+  </script>
+</body>
+
+</html>

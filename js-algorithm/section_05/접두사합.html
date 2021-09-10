@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(l, r, arr) {
+        let sum = 0;
+        const p = [0];
+
+        for (let i = 0; i < arr.length; i++) {
+          sum += arr[i];
+          p.push(sum);
+        }
+
+        return p[r] - p[l - 1];
+      }
+      const arr = [10, 20, 30, 40, 50];
+      console.log(solution(2, 5, arr));
+    </script>
+  </body>
+</html>

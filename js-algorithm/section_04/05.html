@@ -1,0 +1,37 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(n, k, card) {
+        const sum = [];
+
+        // 중복을 제외하기 위해 Set이라는 자료구조를 사용할 수 있음
+        // const sum = new Set();
+
+        // 모든 경우의 수 찾기
+        for (let i = 0; i < n; i++) {
+          for (let j = i + 1; j < n; j++) {
+            for (let l = j + 1; l < n; l++) {
+              sum.push(card[i] + card[j] + card[l]);
+            }
+          }
+        }
+
+        // sum.sort();
+        // compareFunction 없이 sort를 실행하게 되면 숫자를 문자열로 반환한 후 유니코드에 따라 정렬
+        // 따라서 숫자가 정확하게 정렬되지 않음
+
+        sum.sort((a, b) => b - a);
+
+        // K번 째 큰 수 찾기
+        return sum[k - 1];
+      }
+
+      let arr = [13, 15, 34, 23, 45, 65, 33, 11, 26, 42];
+      console.log(solution(10, 3, arr));
+    </script>
+  </body>
+</html>

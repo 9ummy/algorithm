@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        const candidate = { A: 0, B: 0, C: 0, D: 0, E: 0 };
+
+        for (let i = 0; i < s.length; i++) {
+          candidate[`${s[i]}`]++;
+        }
+
+        const keys = Object.keys(candidate);
+        const values = Object.values(candidate);
+
+        const index = values.indexOf(Math.max(...values));
+
+        return keys[index];
+      }
+
+      let str = 'BACBACCACCBDEDE';
+      console.log(solution(str));
+    </script>
+  </body>
+</html>

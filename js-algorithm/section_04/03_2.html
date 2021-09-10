@@ -1,0 +1,46 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>출력결과</title>
+</head>
+
+<body>
+  <script>
+    function solution(test) {
+      const m = test.length;
+      const n = test[0].length;
+      const pairs = [];
+      let answer = 0;
+
+      for (let i = 1; i <= n; i++) {
+        for (let j = 1; j <= n; j++) {
+          pairs.push([i, j]);
+        }
+      }
+
+      for ([a, b] of pairs) {
+        let count = 0;
+        for (let k = 0; k < m; k++) {
+          // 각 테스트마다 a, b 학생의 인덱스를 기록하기 위한 변수 선언
+          let pa = pb = 0;
+          for (let s = 0; s < n; s++) {
+            if (test[k][s] === a) pa = s;
+            if (test[k][s] === b) pb = s;
+          }
+          // 각 테스트에 대한 검증이 완료된 경우 체크
+          if (pa < pb) count++;
+        }
+        // 모든 테스트에 대한 검증을 끝냈을 때 테스트 횟수만큼 검증을 통과했다면 멘토 - 멘티 관계 성립
+        if (count === m) answer++;
+      }
+
+      return answer;
+    }
+
+    let arr = [[3, 4, 1, 2], [4, 3, 2, 1], [3, 1, 4, 2]];
+    console.log(solution(arr));
+  </script>
+</body>
+
+</html>

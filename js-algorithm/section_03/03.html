@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(str){
+              const onlyNum = str.split('').filter((a) => {
+                if(!isNaN(parseInt(a))) return a;
+              });
+
+              // 문자열 탐색으로 할 경우
+              // let answer = '';
+              // for (let x of str) {
+              //  if (!isNaN(x)) answer += x;
+              // }
+
+              return parseInt(onlyNum.join(''));
+            }
+            let str="g0en2T0s8eSoft";
+            console.log(solution(str));
+        </script>
+    </body>
+</html>

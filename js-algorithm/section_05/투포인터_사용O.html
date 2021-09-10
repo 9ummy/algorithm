@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(n, arr) {
+        let answer = 0;
+        let sum = 0;
+        let end = 0;
+
+        // 투 포인터를 사용한 풀이
+        // 시작점 start를 배열 시작부터 오른쪽으로 한 칸씩 옮김
+        for (let start = 0; start < arr.length; start++) {
+          // 끝점 end를 가능한 만큼 이동시킴
+          while (sum < n && end < arr.length) {
+            sum += arr[end];
+            console.log('start: ' + start, 'end: ' + end, 'sum: ' + sum);
+
+            end++;
+          }
+
+          if (sum === n) answer++;
+
+          sum -= arr[start];
+        }
+
+        return answer;
+      }
+      const arr = [1, 2, 3, 2, 5];
+      console.log(solution(5, arr));
+    </script>
+  </body>
+</html>
