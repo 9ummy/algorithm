@@ -1,3 +1,8 @@
+#
+# 20055번: 컨베이어 벨트 위의 로봇
+# https://www.acmicpc.net/problem/20055
+#
+
 # 한 줄에 두 개 입력 받기
 n, k = map(int, input().split())
 # 한 줄에 여러 개 입력 받아서 리스트로 만들기
@@ -55,3 +60,9 @@ while not shouldStop(durability):
 
 
 print(answer)
+
+# 1. 내구도 0 될 때 세주는 변수 따로 만들어서 세어줘도 좋을 듯
+# 2. deque의 rotate 함수
+# 3. 로봇 이동해서 마지막 칸 왔을 때 0 으로 바꿔주는 거 값 굳이 확인할 필요 없이 0으로 만들어줘도 될 듯
+# 4. 로봇 저장도 boolean으로 하면 더 효율적일 듯
+# 5. 내구도 체크할 때 리스트 쓸 거라면 durability.count(0) 식으로 해도 좋겠는데?

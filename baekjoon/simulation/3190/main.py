@@ -1,3 +1,8 @@
+#
+# 3190번: 뱀
+# https://www.acmicpc.net/problem/3190
+#
+
 from collections import deque
 
 # 보드 크기 입력 받기
@@ -101,3 +106,17 @@ while (r >= 1 and r <= n and c >= 1 and c <= n):
 
 
 print(seconds)
+
+# 1. 방향 전환
+# 우 하 좌 상
+# dx = [0, 1, 0, -1]
+# dy = [1, 0, -1, 0]
+# dir = 0
+
+# while문 안에서 아래와 같은 식으로
+#  x = x + dx[dir]
+#  y = y + dy[dir]
+
+# if len(moves) > 0 and moves[0][0] == seconds:
+#     dir = (dir + 1) % 4 if moves[0][1] == 'D' else (dir - 1) % 4
+#     del moves[0]
